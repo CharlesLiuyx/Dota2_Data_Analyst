@@ -1,2 +1,2 @@
 # Dota2_Data_Analyst
-A python project to process the data from Stratz.com and build machine learning model to predict the outcome of game
+A python **individual original project** to process the data from Stratz.com and to build machine learning model to predict the outcome of games is maintained by `Charles Liu`
