@@ -105,3 +105,7 @@ venv.bak/
 
 # data
 *.xlsx
+
+# IDEA
+.idea/
+.idea
