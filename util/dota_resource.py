@@ -81,7 +81,7 @@ def get_heroID_to_heroName_dict():
 # main for test
 if __name__ == '__main__':
     dir = get_mata_data_directory()
-    heroIds = [113, 22, 67, 55, 17, 85]
+    heroIds = [16, 17, 99, 112, 81, 47, 119, 77, 57, 100]
     print(map_heroId_to_heroName_dict(dir, heroIds))
 
     print(get_heroID_list(dir))

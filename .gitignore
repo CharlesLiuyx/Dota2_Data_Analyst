@@ -109,3 +109,6 @@ venv.bak/
 # IDEA
 .idea/
 .idea
+
+# data file
+parser_*.json
