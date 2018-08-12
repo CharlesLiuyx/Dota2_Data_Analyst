@@ -82,8 +82,8 @@ def get_all_heroes_sc_matrix_dict(week, matchlimit=-1, content_name="synergy"):
       ...115
     }
     """
-    dir = os.path.join("data", "heroes.json")
-    hero_ids = get_heroID_list(dir)
+    dir_temp = os.path.join("data", "heroes.json")
+    hero_ids = get_heroID_list(dir_temp)
     with_matrix = {}
     vs_matrix = {}
     for hero_id in hero_ids:
@@ -112,12 +112,12 @@ def average_all_heroes_sc_matrix_dict(week_start, week_num, matchlimit=-1, conte
         with_array.append(with_matrix_temp)
         vs_array.append(vs_matrix_temp)
 
-    dir = os.path.join("data", "heroes.json")
-    heroId_list = get_heroID_list(dir)
-    for heroId_main in heroId_list:
+    dir_temp = os.path.join("data", "heroes.json")
+    hero_id_list = get_heroID_list(dir_temp)
+    for heroId_main in hero_id_list:
         with_matrix[heroId_main] = {}
         vs_matrix[heroId_main] = {}
-        for heroId_target in heroId_list:
+        for heroId_target in hero_id_list:
             with_average = 0
             vs_average = 0
             for i in range(week_num):
@@ -144,7 +144,7 @@ def average_all_heroes_sc_matrix_dict(week_start, week_num, matchlimit=-1, conte
 def dump_matrix_json_to_excel(matrix_name, matrix):
     """
     :param matrix_name: file name
-    :param matrix[dict]: the json file you want to convert
+    :param matrix: [dict] the json file you want to convert
     :return: pass
     generate the excel .xlsx file to /data directory
     """
@@ -172,6 +172,7 @@ def process_heroes_with_vs_matrix_to_excel(is_update=True, week_num=0, content_n
                       Set False load json file locally
     :param week_num: 0 as default with 1 week (current week)
                      >0 weeks amount
+    :param content_name: refer to the notation of Func get_matrix_raw_dict
     :return: pass
     process data to dump the json to excel locally
     """
@@ -180,7 +181,7 @@ def process_heroes_with_vs_matrix_to_excel(is_update=True, week_num=0, content_n
         if week_num == 0:
             with_synergy_matrix, vs_synergy_matrix = get_all_heroes_sc_matrix_dict(
                 week=2521,  # week=0 is current week
-                matchlimit=0,  # make sure all 115 heroes contained
+                matchlimit=0,  # make sure all 115 heroes are contained
                 content_name=content_name
             )
         else:
@@ -188,9 +189,9 @@ def process_heroes_with_vs_matrix_to_excel(is_update=True, week_num=0, content_n
                 #  Please access Stratz API using
                 #  https://api.stratz.com/api/v1/Hero/1/dryad?take=115&rank=6,7&matchlimit=0
                 #  to get the current week number, for example 2522 is 4/30 - 5/6
-                week_start=2522,
+                week_start=2528,
                 #  the weeks amount
-                week_num=3,
+                week_num=4,
                 #  matchlimit = 0 refer to the 115 heroes with no limitation
                 matchlimit=0,
                 #  the schema name
@@ -212,7 +213,7 @@ def process_heroes_with_vs_matrix_to_excel(is_update=True, week_num=0, content_n
 
 if __name__ == '__main__':
     process_heroes_with_vs_matrix_to_excel(
-        is_update=False, # if you want to update to the latest match, change it to True
-        week_num=0, # >0 means gather data of weeks
+        is_update=True,  # if you want to update to the latest match, change it to True
+        week_num=4,  # >0 means gather data of weeks
         content_name="synergy"
     )

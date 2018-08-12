@@ -12,6 +12,7 @@ def _load_json_file(dir):
         json_file = json.load(f)
     return json_file
 
+
 def get_mata_data_directory():
     """
     :return: path about heroes.json which contains info about heroes
@@ -22,7 +23,7 @@ def get_mata_data_directory():
 def get_patch_heroes_num():
     """
     :return: [integer]the num of patch total heroes
-    7.13b TODO need to description at README.md and modify by dota2 patch
+    7.17 TODO need to description at README.md and modify by dota2 patch
     """
     return 115
 
